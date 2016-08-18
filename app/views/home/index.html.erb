@@ -12,11 +12,12 @@
 <script type="text/javascript">
 	$( "#image_btn" ).click(function() {
 		console.log($("#image").val());
+		data_send ={"send": $("#image").val()}
 		$.ajax({
 		  type: "POST",
 		  url: "http://localhost:3000/home/transform",
-		  data: $("#image").val(),
-		  dataType: 'text',
+		  data: data_send,
+		  dataType: 'json',
 		  success: function(response){
 		  	console.log("got it!")
 		  }
