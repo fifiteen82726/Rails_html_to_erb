@@ -5,24 +5,19 @@ class HomeController < ApplicationController
 		
 	end
 
-
 	def transform
 		# binding.pry
 		a = params["send"]
-		b = a.tr('/', '')
-		# input = %q(a)
-		# binding.pry
-		page = Nokogiri::HTML(b)   
+		page = Nokogiri::HTML(a) 
 		img = page.css('img')[0]
 		src =  ""
 		alt =  ""
 		class_atr = ""
 		src =  img['src']
-		alt =  img['alt']
+		alt =  img['alt'] if img['alt'].present?
 		class_atr = img['class']
 		result = "<%= image_tag(\'" + src + '\', :class => \'' + class_atr + '\', :alt => \'' + alt + '\')%>'
-		p result
-		binding.pry
+		render :json => {"result" => result } 
 	end
 
 end

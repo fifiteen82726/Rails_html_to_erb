@@ -2,24 +2,34 @@
 
 <h1> Enter image_tag: <br>
 <input style="width:500px; height:30px;"  id ="image" type="text" name="image_tag" placeholder="<img src=&quot;path/test.png&quot; class =&quot;btn btn-primary&quot; alt =&quot;alt-attribute&quot;>"> 
-
 <button id ="image_btn">submit</button>
 </h1>
 
+
+<div id ="result">
+	
+</div>
+
+
+
+
+
+<!-- <img src="asdas/d" class ="123 bbb"> -->
 
 
 
 <script type="text/javascript">
 	$( "#image_btn" ).click(function() {
-		console.log($("#image").val());
 		data_send ={"send": $("#image").val()}
+		// console.log("hi" + data_send["send"]);
 		$.ajax({
 		  type: "POST",
 		  url: "http://localhost:3000/home/transform",
 		  data: data_send,
 		  dataType: 'json',
 		  success: function(response){
-		  	console.log("got it!")
+		  	console.log(response["result"])
+		  	$("#result").append('<h3>'+ response["result"] +'</h3>')
 		  }
 		});
 	});
