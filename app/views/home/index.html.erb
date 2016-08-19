@@ -1,23 +1,19 @@
 <div class="container">
-<div class="row">
-<div class="col-md-12">
-<h1> Enter image_tag: 
-</h1>
-</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h1> Enter image_tag: 
+			</h1>
+		</div>
+		<div class="col-md-12">
+			<input style="width:100%"  id ="image" type="text" name="image_tag" placeholder="<img src=&quot;path/test.png&quot; class =&quot;btn btn-primary&quot; alt =&quot;alt-attribute&quot;>"> 
+			<button style="margin-top: 10px;" class ="btn btn-primary-outline" id ="image_btn">submit</button>
+		</div>
 
-<div class="col-md-12">
-<input style="width:100%"  id ="image" type="text" name="image_tag" placeholder="<img src=&quot;path/test.png&quot; class =&quot;btn btn-primary&quot; alt =&quot;alt-attribute&quot;>"> 
-
-<button style="margin-top: 10px;" class ="btn btn-primary-outline" id ="image_btn">submit</button>
-</div>
-
-<div class="col-md-12">
-<div id ="result">
-</div>
-</div>
-
-
-</div>
+		<div class="col-md-12">
+			<div id ="result">
+			</div>
+		</div>
+	</div>
 </div>
 
 
@@ -34,14 +30,14 @@
 		data_send ={"send": $("#image").val()}
 		// console.log("hi" + data_send["send"]);
 		$.ajax({
-		  type: "POST",
-		  url: "http://localhost:3000/home/transform",
-		  data: data_send,
-		  dataType: 'json',
-		  success: function(response){
-		  	console.log(response["result"])
-		  	$("#result").append('<p>'+ response["result"] +'</p>')
-		  }
+			type: "POST",
+			url: "http://localhost:3000/home/transform",
+			data: data_send,
+			dataType: 'json',
+			success: function(response){
+				console.log(response["result"])
+				$("#result").append('<p>'+ response["result"] +'</p>')
+			}
 		});
 	});
 

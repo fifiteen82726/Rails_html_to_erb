@@ -20,4 +20,9 @@ class HomeController < ApplicationController
 		render :json => {"result" => result } 
 	end
 
+
+	def link
+		
+	end
+
 end
