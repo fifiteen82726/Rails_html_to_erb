@@ -1,4 +1,6 @@
 <div class="container">
+	
+	<!-- image -->
 	<div class="row">
 		<div class="col-md-12">
 			<h1> Enter image_tag: 
@@ -14,6 +16,27 @@
 			</div>
 		</div>
 	</div>
+	<!-- image -->
+	<br>
+	<!-- form -->
+	<div class="row">
+		<div class="col-md-12">
+			<h1> Enter form: 
+			</h1>
+		</div>
+		<div class="col-md-12">
+			<input style="width:100%"  id ="form" type="text" name="image_tag" placeholder="<form...>"> 
+			<button style="margin-top: 10px;" class ="btn btn-primary-outline" id ="form_btn">submit</button>
+		</div>
+
+		<div class="col-md-12">
+			<div id ="form_result">
+			</div>
+		</div>
+	</div>
+	<!-- form -->
+
+
 </div>
 
 
@@ -40,7 +63,24 @@
 			}
 		});
 	});
+</script>
 
 
-	
+
+<script type="text/javascript">
+	$( "#form_btn" ).click(function() {
+		data_send ={"send": $("#form").val()}
+		// console.log("hi" + data_send["send"]);
+		$.ajax({
+			type: "POST",
+			url: "home/form",
+			data: data_send,
+			dataType: 'json',
+			success: function(response){
+				console.log(response["result"])
+				$("#form_result").append('<p>'+ response["result"] +'</p>');
+				$("#form_result").append('<p>'+ "\<% end %\>"+ '</p>');
+			}
+		});
+	});
 </script>

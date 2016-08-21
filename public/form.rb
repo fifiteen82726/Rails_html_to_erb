@@ -3,7 +3,7 @@ require 'nokogiri'
 
 
 
- html = %q("<form accept-charset="UTF-8" action="/search" method="get">
+ html = %q("<form accept-charset="UTF-8" action="/search" method="get" class= "2123">
   <input name="utf8" type="hidden" value="&#x2713;" />
   <label for="q">Search for:</label>
   <input id="q" name="q" type="text" />
@@ -22,10 +22,18 @@ require 'nokogiri'
 
 form =  Nokogiri::HTML(html) 
 main_form = form.css('form')[0]
-url = main_form['action']
-method = main_form['method']
+class_atr = ""
+class_atr = main_form['class'] 
 
-form_tag = "<%= form_tag(\'" + url + "\', method: \'" + method+  "\' ) do %>"
+		action = ""
+		action = main_form['action'] 
+
+		method = ""
+		method = main_form['method'] 
+p class_atr
+p method
+p action
+form_tag = "<%= form_tag(\'" + action + "\', method: \'" + method+  "\', " + "class: \'" + class_atr+ "\' ) do %>"
 
 end_tag = "<% end %>"
 
